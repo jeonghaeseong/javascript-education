@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 01.함수선언문
+      function add(x, y) {
+        return x + y;
+      }
+
+      // 02.함수표현식
+      // 익명함수
+      var add = function (x, y) {
+        return x + y;
+      };
+      // 기명함수
+      var add = function sum(x, y) {
+        return x + y;
+      };
+
+      // 03. Function() 생성자 함수
+      var add = new Function("x", "y", "return x + y");
+
+      console.log(add(1, 3));
+
+      // 기명함수 예제
+      var menus = [
+        {
+          id: 1,
+          parentId: null,
+          name: "대메뉴1",
+        },
+        {
+          id: 2,
+          parentId: null,
+          name: "대메뉴2",
+        },
+        {
+          id: 3,
+          parentId: null,
+          name: "대메뉴3",
+        },
+        {
+          id: 4,
+          parentId: 1,
+          name: "대메뉴1 > 소메뉴1",
+        },
+        {
+          id: 5,
+          parentId: 1,
+          name: "대메뉴1 > 소메뉴2",
+        },
+        {
+          id: 6,
+          parentId: 3,
+          name: "대메뉴3 > 소메뉴1",
+        },
+        {
+          id: 6,
+          parentId: 4,
+          name: "대메뉴1 > 소메뉴1 > 메뉴1",
+        },
+      ];
+
+      var drawMenus = function drawChildMenu(parentId, menus) {
+        for (var i = 0; i < menus.length; i++) {
+          if (menus[i].parentId === parentId) {
+            console.log(menus[i]);
+            drawChildMenu(menus[i].id, menus);
+          }
+        }
+      };
+
+      drawMenus(null, menus);
+    </script>
+  </body>
+</html>

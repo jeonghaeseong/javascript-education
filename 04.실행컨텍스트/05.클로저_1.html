@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 외부 함수
+      function outerFunc(arg1, arg2) {
+        var local = 8; // 외부 함수의 변수
+        // 내부 함수
+        function innerFunc(innerArg) {
+          console.log((arg1 + arg2) / (innerArg + local)); // 외부 함수의 변수를 참조
+        }
+        return innerFunc;
+      }
+
+      var exam1 = outerFunc(2, 4);
+      exam1(2);
+      console.log(1111);
+    </script>
+  </body>
+</html>

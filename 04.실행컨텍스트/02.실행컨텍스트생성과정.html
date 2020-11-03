@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var gVar = "전역변수"; // Global Object 에 포함
+
+      // Global Object 에 포함
+      function execute(param1, param2) {
+        var a = 1;
+        var b = 2;
+
+        function innerFunc() {
+          var c = 3;
+
+          console.log("innerFunc : ");
+          console.dir(innerFunc);
+          console.log("this : ", this);
+
+          return a + b + c;
+        }
+
+        console.log("execute scope : ");
+        console.dir(execute);
+
+        return param1 + param2 + innerFunc();
+      }
+
+      execute(3, 4);
+    </script>
+  </body>
+</html>

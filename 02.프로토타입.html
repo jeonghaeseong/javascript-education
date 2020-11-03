@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 함수객체는 일반객체와 다른 프로퍼티를 가지고 있음
+        // [[Prototype]] === __proto__
+
+        // 함수객체
+        function add(x, y) {
+            return x + y;
+        }
+        // 일반객체
+        var sum = {};
+
+        console.dir(add);
+        console.dir(sum);
+
+        // 함수객체에는 prototype 프로퍼티가 존재함 (prototype 객체는 constructor 프로퍼티가 존재함)
+        // prototype은 원형이라는 사전적 의미를 가짐
+        console.log(add.__proto__ === Function.prototype);
+        console.log(add.prototype.constructor === add);
+
+    </script>
+</body>
+</html>

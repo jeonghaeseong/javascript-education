@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   // javascript에서 함수는 값으로 취급한다.
+
+      //   // 함수를 매개변수로 제공
+      //   var func = function (pFunc) {
+      //     console.log("함수실행");
+      //     pFunc();
+      //   };
+
+      //   func(function () {
+      //     console.log("함수를 매개변수로 전달");
+      //   });
+
+      //   // 함수가 함수를 반환
+      //   var rtn = function () {
+      //     return function () {
+      //       console.log("함수반환");
+      //     };
+      //   };
+
+      //   var rtnTemp = rtn();
+      //   rtnTemp();
+
+      // 변수, 프로퍼티에 함수 할당
+      var bar = function () {
+        return 100;
+      };
+
+      console.log(bar());
+
+      var obj = {};
+      obj.baz = function () {
+        return 200;
+      };
+
+      // console.log(obj.baz());
+
+      // 위의 3가지 특징을 가진 함수를 일급함수라고 하며 일급함수는 함수형 프로그래밍이 가능해진다.
+    </script>
+  </body>
+</html>

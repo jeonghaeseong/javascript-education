@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 명시적 this 바인딩
+      // call, apply, bind
+      function Person(name, age, gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+      }
+
+      var foo = {};
+      //   Person.call(foo, "foo", 30, "man");
+      //   Person.apply(foo, ["foo", 30, "man"]);
+      console.dir(foo);
+
+      var Obj1 = {
+        name: "정해성",
+        getName: function () {
+          return this.name;
+        },
+      };
+
+      var Obj2 = {
+        name: "임꺽정",
+      };
+
+      console.log(Obj1.getName());
+      console.log(Obj1.getName.apply(Obj2));
+
+      // bind
+      var Obj3 = {
+        name: "홍길동",
+      };
+      console.log(Obj1.getName.bind(Obj3));
+      console.log(Obj1.getName());
+    </script>
+  </body>
+</html>

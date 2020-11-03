@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 함수의 캡슐화
+
+      var getCircleArea = function () {
+        var pi = 3.14;
+
+        return function (radius) {
+          return Math.pow(radius, 2) * pi;
+        };
+      };
+
+      var circle = getCircleArea();
+      console.log(circle(6));
+      // circle.pi
+      // getCircleArea.pi
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 프로토타입 기반의 객체지향 프로그래밍을 지원
+
+      // 생성자함수
+      function Car(color) {
+        this.color = color;
+        this.speed = 200;
+        this.distance = 10000;
+
+        this.power = true;
+
+        this.setPower = function (power) {
+          this.power = power;
+          console.log("전원 : ", this.power);
+        };
+      }
+
+      //   var k1 = new Car("red");
+
+      //   console.dir(Car);
+      //   console.dir(k1);
+
+      // 상태는 생성자 함수의 프로퍼티로 정의하지만 함수의 경우 prototype 객체의 프로퍼티로 만들어줌
+
+      Car.prototype.start = function () {
+        console.log("Car.prototype.start this: ", this);
+
+        if (this.power) {
+          console.log("출발");
+        } else {
+          console.log("시동을 켜주세요.");
+        }
+      };
+
+      Car.prototype.stop = function () {
+        if (this.power) {
+          console.log("정지");
+        }
+      };
+
+      var k7 = new Car("white");
+
+      k7.start = function () {};
+
+      k7.start();
+      k7.stop();
+
+      // k7.setPower(true);
+
+      // var k3 = new Car('black');
+
+      console.log("Car 생성자 함수");
+      console.dir(Car);
+      console.log("Car의 k7 객체 ");
+      console.dir(k7);
+      //   // console.dir(k3);
+
+      //   console.log(
+      //     "k7.__proto__ === Car.prototype : ",
+      //     k7.__proto__ === Car.prototype
+      //   );
+      //   console.log(
+      //     "Car.__proto__ === Function.prototype : ",
+      //     Car.__proto__ === Function.prototype
+      //   );
+
+      // String.prototype.checkEmail = function() {
+      //     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.valueOf().toLowerCase());
+      // };
+
+      // var str = 'a@a.kr';
+      // console.log(str.checkEmail());
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내부함수가 외부함수에 있는 변수의 복사본이 아니라 실제 변수에 접근한다는 것에 주의하여야 한다.
+      function countSeconds(howMany) {
+        for (var i = 1; i <= howMany; i++) {
+          setTimeout(function () {
+            console.log(i);
+          }, i * 1000);
+        }
+      }
+
+      countSeconds(3);
+    </script>
+  </body>
+</html>
