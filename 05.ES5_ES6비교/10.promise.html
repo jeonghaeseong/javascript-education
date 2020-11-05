@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="range" />
+    <span class="shadow-host">
+        <a href="https://twitter.com/ireaderinokun">
+            Follow @ireaderinokun
+         </a>
+    </span>
+    <script>
+
+        const shadowEl = document.querySelector(".shadow-host");
+        const shadow = shadowEl.attachShadow({mode: 'open'});
+
+        // ES5 비동기 처리
+        function getUserES5(callback) {
+            setTimeout(function() {
+
+                var response = {
+                    users: [
+                        { 
+                            email: 'briskly0415@rootsoft.kr',
+                            name: '정해성'
+                        }
+                    ]
+                };
+
+                callback(response);
+            }, 2000);
+        }
+
+        getUserES5(function(response) {
+            console.log('ES5 render ', response);
+        });
+
+        // ES6 Promise 비동기 처리
+        // 프로미스는 자바스크립트 비동기 처리에 사용되는 객체
+        // 프로미스는 3가지 상태를 가짐
+        // 1. Pending(대기)
+        // 2. Fulfilled(이행)
+        // 3. Rejected(실패)
+        const getUserES6 = () => {
+            return new Promise((resolve, reject) => { // 1. Pending
+                setTimeout(function() {
+
+                    var response = {
+                        users: [
+                            { 
+                                email: 'briskly0415@rootsoft.kr',
+                                name: '정해성'
+                            }
+                        ]
+                    };
+
+                    if(response) {
+                        resolve(response); // 2.Fulfilled
+                    }
+
+                    reject(); // or reject(new Error("요청 실패")); // 3.Rejected
+                }, 2000);
+            });
+        };
+
+        const getAuthES6 = (users) => {
+
+            return new Promise((resolve, reject) => {
+                console.log('getAuthES6 : ', users);
+                setTimeout(() => {
+                    resolve({
+                        users: users,
+                        authkey: 'adafawqrqwhdsfasdfad3234adfasdd'
+                    });
+                }, 1000);
+            });
+        };
+
+        const error = () => {
+            return new Promise((resolve, reject) => {
+                throw new Error('error');
+            });
+        };
+
+        getUserES6().then((response) => {
+            console.log('ES6 render ', response);
+            return response;
+        })
+        .then(error)
+        .then(getAuthES6)
+        .then((key) => {
+            console.log(key);
+        })
+        .catch((err) => {
+            console.log(err);
+            return false;
+        });
+
+    </script>
+</body>
+</html>

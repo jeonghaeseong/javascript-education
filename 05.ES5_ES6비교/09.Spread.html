@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 배열을 함수의 파라메터로 변경
+      const buy = (a, b, c, d) => {
+        console.log(a, b, c, d);
+      };
+
+      var cart = ["bag", "pants", "socks"];
+
+      buy(...cart);
+
+      // 배열 확장
+      var cart = ["bag", "pants", "socks"];
+      const anotherCart = [...cart, "laptop"];
+
+      // 객체 확장
+      const column = {
+        id: "column1",
+        name: "컬럼1",
+        width: 100,
+      };
+
+      const newColumn = {
+        ...column,
+        id: "column2",
+        name: "컬럼2",
+      };
+
+      console.log(anotherCart);
+      console.log(newColumn);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function printUserInformation(data) {
+        const { name, age, gender, hobbies } = data;
+        const [firstHobby] = hobbies;
+
+        console.log(`이름: ${name}`);
+        console.log(`나이: ${age}`);
+        console.log(`가장 좋아하는 취미: ${firstHobby}`);
+      }
+
+      // 파라메터 변수명 변경 가능
+      function printError({ errorCode, errorMessage: msg }) {
+        console.log(`에러코드: ${errorCode}`);
+        console.log(`메시지: ${msg}`);
+      }
+
+      printUserInformation({
+        name: "정해성",
+        age: 34,
+        gender: "M",
+        hobbies: ["Programing", "Basketball"],
+      });
+
+      printError({
+        errorCode: 400,
+        errorMessage: "에러",
+      });
+    </script>
+  </body>
+</html>

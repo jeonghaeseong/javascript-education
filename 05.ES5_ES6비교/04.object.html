@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const iPhone = "아이폰";
+      const iPad = "아이패드";
+      const iMac = "아이맥";
+
+      const appleProducts = { iPhone, iPad, iMac };
+
+      const ironMan = "Iron Man";
+      const captainAmerica = "Captain America";
+
+      const MarvelHeros = {
+        [ironMan]: "I`m the Iron Man.",
+        ["Groot"]: "I am Groot.",
+        [captainAmerica]: "My name is Steve Rogers.",
+        ["3-D" + "MAN"]: "I`m the 3-D Man!",
+      };
+
+      console.dir(appleProducts);
+      console.dir(MarvelHeros);
+    </script>
+  </body>
+</html>

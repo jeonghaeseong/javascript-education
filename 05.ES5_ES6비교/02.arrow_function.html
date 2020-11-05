@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta age="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 화살표 함수는 함수를 선언할 때 this에 바인딩할 객체가 정적으로 결정된다.
+      // 동적으로 결정되는 일반 함수와는 달리 화살표 함수의 this 언제나 상위 스코프의 this를 가리킨다.
+      // 화살표 함수로 메소드를 정의하는 것은 피해야 한다.
+      // 생성자함수로 사용할 수 없다. (prototype에 constructor 가 없음)
+
+      var sum = (a, b) => {
+        console.log(this);
+        return a + b;
+      };
+
+      const obj = {
+        age: 34,
+        getName: () => {
+          const innerFunc = () => {
+            console.log("innerFunc : ", this);
+          };
+
+          console.log("getName : ", this);
+
+          innerFunc();
+          // return innerFunc;
+        },
+      };
+
+      console.log(sum(2, 3));
+      var tempInnerFunc = obj.getName();
+      // tempInnerFunc();
+    </script>
+  </body>
+</html>

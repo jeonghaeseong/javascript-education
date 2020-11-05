@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sayHello(name) {
+        // sayHello 실행컨텍스트 안에 블록객체를 만듬
+        if (!name) {
+          console.log("let 실행 전");
+
+          let errorMessage = '"name" parameter should be non empty String.';
+
+          alert(errorMessage);
+        }
+
+        console.log("Hello, " + name + "!");
+        console.log(errorMessage); // ReferenceError
+      }
+
+      sayHello();
+    </script>
+  </body>
+</html>
