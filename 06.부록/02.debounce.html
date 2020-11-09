@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="text" class="autocomplete" />
+      <div class="status-ajax"></div>
+    </form>
+    <script>
+      var httpRequset;
+      var timeout;
+      var curValue;
+
+      document
+        .querySelector(".autocomplete")
+        .addEventListener("input", function () {
+          curValue = this.value;
+
+          clearTimeout(timeout);
+
+          timeout = setTimeout(function () {
+            document.querySelector(".status-ajax").innerHTML = "";
+            getCity(curValue);
+          }, 1000);
+        });
+
+      function getCity(cityName) {
+        httpRequset = new XMLHttpRequest();
+
+        if (!httpRequset) return false;
+
+        httpRequset.onreadystatechange = bindCity;
+        httpRequset.open("GET", "./places_of_interest.json", true);
+        // httpRequset.setRequestHeader(
+        //   "Content-Type",
+        //   "application/x-www-form-urlencoded"
+        // );
+        httpRequset.send("cityName=" + encodeURIComponent(cityName));
+      }
+
+      function bindCity() {
+        if (httpRequset.readyState === XMLHttpRequest.DONE) {
+          if (httpRequset.status === 200) {
+            console.log("성공");
+
+            var data = JSON.parse(httpRequset.response);
+
+            var findCnt = 0;
+
+            var el = `
+            <table>
+                ${data
+                  .map(function (cur, idx) {
+                    console.log(cur.NAME, curValue);
+
+                    if (
+                      cur.NAME.toUpperCase().includes(curValue.toUpperCase())
+                    ) {
+                      findCnt++;
+                      return `
+                        <tr>
+                            <td>${idx}</td>
+                            <td>${cur.LOCATION}</td>
+                            <td>${cur.NAME}</td>
+                            <td>${cur.LONGITUDE}</td>
+                            <td>${cur.LATITUDE}</td>
+                        </tr>
+                        `;
+                    } else "";
+                  })
+                  .join("")}
+            </table>
+            `;
+
+            document.querySelector(".status-ajax").innerHTML =
+              `(${findCnt}/${data.length})` + el;
+          } else {
+            console.log("실패");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
